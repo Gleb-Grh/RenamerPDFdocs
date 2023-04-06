@@ -12,4 +12,4 @@ pycparser==2.21
 PyPDF2==3.0.1
 pytesseract==0.3.10
 Wand==0.6.11
-poppler-23.01.0
+poppler==23.01.0
