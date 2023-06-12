@@ -1,5 +1,5 @@
 import tkinter as tk  
-from Renamer import renamer
+# from Renamer import renamer
 
 
 def get_path():
@@ -7,7 +7,7 @@ def get_path():
     savetext = savetext_vidj_val.get()
     if filePath:
         global btntext
-        renamer(filePath=filePath, savetxt=savetext)
+        # renamer(filePath=filePath, savetxt=savetext)
         btn1['text'] = 'Завершено'
     else:
         message = tk.Label(win, text='Укажите путь', bg='blue', fg='white')

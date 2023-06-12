@@ -1,5 +1,5 @@
 import unittest
-from oop_renamer import PDFSearcher
+from oop_renamer_v2 import PDFSearcher
 
 
 class TestListPathes(unittest.TestCase):
