@@ -103,7 +103,7 @@ class Manage:
             if self.savetext == 'y':
                 PdfImgToText(path=path).pdf_to_text(filename_end=filename_end)
             self.final_name.renamer(path=path, filename_end=filename_end)
-
+        return self.pathes
 
 if __name__ == '__main__':
      Manage(r'C:\Users\glebg\Documents\tests','y').manage()
