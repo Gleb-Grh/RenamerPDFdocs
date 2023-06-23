@@ -21,7 +21,7 @@ class PDFSearcher:
 #Конвертирование формата и чтение картинки pdf как текста 1 страница   
 class ReaderText:
     def __init__(self, path):
-        pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
+        pytesseract.pytesseract.tesseract_cmd = r'Tesseract-OCR\tesseract.exe'
         self.converpath = convert_from_path(path, poppler_path=r'poppler-23.01.0\Library\bin')
 
     def convert_n_read_first_page(self):
@@ -85,27 +85,28 @@ class PdfImgToText(ReaderText):
         with open(file=txtName, mode='w') as file:
             file.write(DocTxt)
 
-#Управляюший класс
-class Manage:
-    def __init__(self, userpath, savetext):
-        self.pathes = PDFSearcher(userpath).path_pdf_collect()
-        self.name_doc_change = NameChanges()
-        self.final_name = FinalName()
-        self.savetext = savetext
-
-    def manage(self):
-        for path in self.pathes:
-            text = ReaderText(path=path).convert_n_read_first_page()
-            name_doc = RegularExp(text=text).name_exp()
-            name_doc_change = self.name_doc_change.changer_signs(name_doc=name_doc)
-            date_doc = RegularExp(text=text).date_exp()
-            filename_end = self.final_name.name_changer(name_doc_change=name_doc_change, date_doc=date_doc)
-            if self.savetext == 'y':
-                PdfImgToText(path=path).pdf_to_text(filename_end=filename_end)
-            self.final_name.renamer(path=path, filename_end=filename_end)
 
 
 if __name__ == '__main__':
-     Manage(r'C:\Users\glebg\Documents\tests','y').manage()
+     #Управляюший класс
+    class Manage:
+        def __init__(self, userpath, savetext):
+            self.pathes = PDFSearcher(userpath).path_pdf_collect()
+            self.name_doc_change = NameChanges()
+            self.final_name = FinalName()
+            self.savetext = savetext
+
+        def manage(self):
+            for path in self.pathes:
+                text = ReaderText(path=path).convert_n_read_first_page()
+                name_doc = RegularExp(text=text).name_exp()
+                name_doc_change = self.name_doc_change.changer_signs(name_doc=name_doc)
+                date_doc = RegularExp(text=text).date_exp()
+                filename_end = self.final_name.name_changer(name_doc_change=name_doc_change, date_doc=date_doc)
+                if self.savetext == 'y':
+                    PdfImgToText(path=path).pdf_to_text(filename_end=filename_end)
+                self.final_name.renamer(path=path, filename_end=filename_end)
+            
+    Manage(r'C:\Users\glebg\Documents\tests','n').manage()
 
           
