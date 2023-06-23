@@ -7,8 +7,8 @@ photo = tk.PhotoImage(file='icon.png')
 win.iconphoto(False, photo)
 win.config(background='light blue')
 win.title('Renamer for legal')
-win.geometry(f"560x400+100+200")
-win.resizable(True, True)
+win.geometry(f"560x300+100+200")
+win.resizable(False, False)
 
 label1 = tk.Label(win, text='''Укажите путь до папки с файлами, 
 содержащими отсканированный текст договора/соглашения/контракта 
@@ -46,26 +46,6 @@ label3 = tk.Label(win,
                   height=3,
                   justify=tk.LEFT,)
 label3.grid(row=3, column=0)
-
-
-label4 = tk.Label(win, 
-                  
-text='''
-    Для работы приложения необходимо установить приложение распознования текста 
-    tesseract на свой компьютер в директорию:
-    C:/Program Files/Tesseract-OCR/tesseract.exe 
-    скачать версию 3.2.1 можно по адресу:
-    https://digi.bib.uni-mannheim.de/tesseract/tesseract-ocr-w64-setup-5.3.1.20230401.exe''',
-                  bg='light blue',
-                    font=('Arial', 10),
-                    padx=10, 
-                    pady=13,  
-                    width=70, 
-                    height=7,  
-                    justify=tk.LEFT,
-                    
-                  )
-label4.grid(row=6, column=0, sticky='s')
 
 pathes_gen = []
 def start():
